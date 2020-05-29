@@ -93,6 +93,15 @@ Site.Job.New.init = function() {
     return false
   }
 
+  function removeWhiteSpaces(event) {
+    let rgxMoney = /^[$]?([0-9]{1,3}.([0-9]{3}.)*[0-9]{3}|[0-9]+)(.[0-9][0-9])?$|([0-9]{1,3}.([0-9]{3}.)*[0-9]{3}|[0-9]+)(.[0-9][0-9])?k/
+    let valueMoney = event.target.value
+    if (!rgxMoney.test(valueMoney)) {
+      $E('#new-job #salary').value = ''
+    }
+  }
+
   let $form = $E('#new-job form')
   $form.querySelector('button[data-type="submit"]').addEventListener('click', submitEvent)
+  $E('#new-job #salary').addEventListener('change', removeWhiteSpaces)
 }
