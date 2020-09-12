@@ -20,7 +20,7 @@
     "metalsmith-uglify": "^2.3.4",
     "metalsmith-writemetadata": "^0.4.5",
     "moment-timezone": "^0.5.31",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "nunjucks": "^3.2.1",
     "nunjucks-moment-timezone-filter": "^1.0.1",
     "transliteration": "^2.1.11"
