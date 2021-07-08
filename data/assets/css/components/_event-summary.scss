@@ -1,3 +1,5 @@
+$thumbnailSizeMobile: 75px;
+
 .next-events-summary,
 .past-events-summary {
   display: grid;
@@ -15,10 +17,13 @@
 .event-summary {
   position: relative;
   justify-self: left;
-  margin-bottom: $space-large;
-  max-width: 300px;
+  margin-bottom: $space-medium;
+  width: 100%;
 
   @include size-medium {
+    width: auto;
+    max-width: 300px;
+    margin-bottom: $space-large;
     justify-self: center;
   }
 
@@ -32,22 +37,36 @@
     text-transform: uppercase;
 
     .date-badge {
-      position: absolute;
-      top: 20px;
-      right: -10px;
-      background-color: $brand-color;
-      padding: 0 5px;
-      z-index: 1;
+      display: none;
 
-      &.invert {
-        color: $brand-color;
-        background-color: $black;
+      @include size-medium {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: -10px;
+        background-color: $brand-color;
+        padding: 0 5px;
+        z-index: 1;
+
+        &.invert {
+          color: $brand-color;
+          background-color: $black;
+        }
       }
     }
 
     .reset-link {
       margin-bottom: $space-small;
       background-image: none;
+      float: left;
+      margin-right: $space-medium;
+      max-width: $thumbnailSizeMobile;
+
+      @include size-medium {
+        float: none;
+        margin-right: 0;
+        max-width: auto;
+      }
 
       &:hover {
         background-image: none;
@@ -57,13 +76,15 @@
 
     img {
       width: 100%;
-      max-width: 300px;
+      min-width: 50px;
       outline: 4px solid $black;
+      border-radius: 50%;
 
       background-color: whitesmoke;
       transition: outline 120ms ease-in-out;
 
       @include size-medium {
+        max-width: 300px;
         width: 300px;
         height: 300px;
       }
@@ -77,6 +98,12 @@
     text-align: left;
     color: $text-color-secondary;
     font-size: 0.9rem;
+    margin-left: $thumbnailSizeMobile;
+    padding-left: $space-medium;
+    @include size-medium {
+      margin-left: 0;
+      padding-left: 0;
+    }
   }
 
   hr {
@@ -84,6 +111,9 @@
     height: 2px;
     color: black;
     background-color: black;
-    margin: $space-large auto $space-larger auto;
+    margin: $space-medium auto $space-large auto;
+    @include size-medium {
+      margin: $space-large auto $space-larger auto;
+    }
   }
 }
